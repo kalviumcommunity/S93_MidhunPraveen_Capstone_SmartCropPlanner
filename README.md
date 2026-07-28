@@ -1,83 +1,119 @@
-# SmartCropPlanner
+# SmartCropPlanner (Capstone Project)
 
-## Capstone Project
+## Project Overview
 
-### Project Idea
+SmartCropPlanner helps small-scale farmers plan crop cycles by providing crop recommendations, planting schedules, and resource estimates based on local conditions and crop requirements. This repository contains the Capstone implementation created for the S93 cohort.
 
-SmartCropPlanner is an AI-powered web application that helps farmers make informed crop planning decisions. The platform analyzes weather conditions, soil suitability, historical crop yields, and market demand to recommend the most suitable crops. This enables farmers to improve productivity, reduce risks, and increase profitability through data-driven farming.
+## Goals
 
----
+- Provide an easy-to-use planner for crop selection and scheduling.
+- Support day-by-day guidance and an implementation plan for reproducible development.
+- Demonstrate a working full‑stack prototype and documentation for evaluation.
 
-## Problem Statement
+## Suggested Tech Stack
 
-Farmers often make crop planning decisions without access to reliable information about weather conditions, soil suitability, historical crop yields, and market demand. This lack of accurate information can lead to poor crop selection, lower productivity, financial losses, and inefficient use of agricultural resources.
+- Frontend: React (or any preferred JS framework)
+- Backend: Node.js + Express (or Flask/Django)
+- Database: MongoDB / PostgreSQL
+- Optional: Docker for local development
 
----
+> Update the stack below if you are using different technologies.
 
-## Proposed Solution
+## Setup (local)
 
-SmartCropPlanner provides:
+Prerequisites:
+- Git
+- Node.js (16+) and npm/yarn (if using Node)
+- Python 3.8+ (if using a Python backend)
+- Docker (optional)
 
-- 🌦️ Weather forecasting for crop planning
-- 🌱 Soil suitability analysis
-- 🌾 AI-based crop recommendations
-- 📊 Historical crop yield insights
-- 💹 Market demand and price analysis
-- 📍 Location-based farming recommendations
+Quick start (example Node/React):
 
----
+1. Clone the repo
 
-## Technologies (Planned)
+   git clone https://github.com/kalviumcommunity/S93_MidhunPraveen_Capstone_SmartCropPlanner.git
+   cd S93_MidhunPraveen_Capstone_SmartCropPlanner
 
-- **Frontend:** HTML, CSS, JavaScript, React
-- **Backend:** Node.js, Express.js
-- **Database:** PostgreSQL
-- **AI/ML:** Python, Scikit-learn (for crop prediction)
-- **APIs:** Weather API, Market Price API
+2. Install backend dependencies
 
----
+   cd backend
+   npm install
 
-## Day-by-Day Plan
+3. Install frontend dependencies
 
-### Day 1
-- Create GitHub repository
-- Create README
-- Plan project architecture
+   cd ../frontend
+   npm install
 
-### Day 2
-- Design wireframes and UI
-- Set up the React project
+4. Run services
 
-### Day 3
-- Develop the Home page
-- Create the Navigation Bar
+   # In backend folder
+   npm start
 
-### Day 4
-- Implement the Weather Forecast module
+   # In frontend folder
+   npm start
 
-### Day 5
-- Develop the Soil Suitability module
+5. Open http://localhost:3000 (or configured port)
 
-### Day 6
-- Build the Crop Recommendation module
 
-### Day 7
-- Set up the backend using Node.js and Express
+## Project Structure
 
-### Day 8
-- Connect PostgreSQL database
-- Integrate Weather and Market APIs
+- backend/ — API, business logic, models
+- frontend/ — UI components and pages
+- docs/ — design notes, dataset references, and test cases
+- data/ — sample data and import scripts
 
-### Day 9
-- Test all modules
-- Fix bugs and improve performance
 
-### Day 10
-- Deploy the application
-- Final documentation and presentation
+## Day-by-day Implementation Plan
 
----
+Day 1 — Project setup & planning
+- Create repository structure and default branch
+- Add this README and a simple project board (issues)
+- Define scope and success criteria
 
-## Expected Outcome
+Day 2 — Data model & backend skeleton
+- Design core data models (Crop, Field, Schedule)
+- Implement basic API endpoints (CRUD for crops and schedules)
+- Add seed/sample data
 
-SmartCropPlanner will help farmers make informed crop planning decisions by combining weather forecasts, soil analysis, historical agricultural data, and market trends. The platform aims to improve crop yield, reduce farming risks, and support sustainable agriculture through AI-driven recommendations.
+Day 3 — Frontend skeleton & routing
+- Create main pages: Dashboard, Planner, Crop Library, Settings
+- Wire up routing and navigation
+- Fetch sample data from backend endpoints
+
+Day 4 — Planner core features
+- Implement crop recommendation logic and planting schedule generator
+- Allow users to add fields and choose crops
+- Display generated schedules on the dashboard
+
+Day 5 — Persistence & integrations
+- Save schedules and user preferences to the database
+- Add import/export of data (CSV/JSON)
+- (Optional) Integrate weather or soil data API for smarter recommendations
+
+Day 6 — Tests & validation
+- Add unit tests for backend logic and recommendation engine
+- Add basic UI tests and manual acceptance criteria
+- Run end-to-end smoke tests
+
+Day 7 — Polish & documentation
+- Improve UI/UX, fix bugs from testing
+- Finalize README and contribution guidelines
+- Prepare demo and presentation materials
+
+
+## Contributing
+
+- Create issues for features/bugs
+- Open PRs against `main` from feature branches
+- Follow code style and add tests for new logic
+
+
+## Authors
+
+- Midhun Praveen (RMidhunPraveen)
+- kalviumcommunity
+
+
+## License
+
+Specify a license (e.g., MIT) in LICENSE file.
