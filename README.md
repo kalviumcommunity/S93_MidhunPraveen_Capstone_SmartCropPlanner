@@ -117,3 +117,12 @@ Day 7 — Polish & documentation
 ## License
 
 Specify a license (e.g., MIT) in LICENSE file.
+
+
+## Development Workflow
+
+- Create a feature branch for each task.
+- Commit changes with clear messages.
+- Push the branch to GitHub.
+- Create a pull request to `main`.
+- Review and merge after approval.
