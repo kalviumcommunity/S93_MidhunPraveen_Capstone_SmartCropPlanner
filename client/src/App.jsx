@@ -1,122 +1,205 @@
-import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import './App.css'
+import Navbar from "./components/Navbar";
+import CropPlanner from "./components/CropPlanner";
+import CropCard from "./components/CropCard";
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
+    <div className="app">
+
+      <Navbar />
+
+      {/* HERO */}
+      <section className="hero-section" id="home">
+
+        <div className="hero-overlay"></div>
+
+        <div className="hero-content">
+
+          <div className="hero-badge">
+            🌿 SMARTCROPPLANNER
+          </div>
+
+          <h1>
+            Plan Better Crops,
+            <br />
+            Grow a <span>Brighter Future</span>
+          </h1>
+
+          <p className="hero-description">
+            Get personalized crop recommendations based on
+            your location, soil type and season.
           </p>
+
+          <div className="benefits">
+
+            <div className="benefit">
+              <div className="benefit-icon">🌱</div>
+              <div>
+                <strong>Better Yield</strong>
+                <small>Choose the right crop</small>
+              </div>
+            </div>
+
+            <div className="benefit">
+              <div className="benefit-icon">🌿</div>
+              <div>
+                <strong>Healthy Soil</strong>
+                <small>Use suitable crops</small>
+              </div>
+            </div>
+
+            <div className="benefit">
+              <div className="benefit-icon">☀️</div>
+              <div>
+                <strong>Higher Profits</strong>
+                <small>Plan for the right season</small>
+              </div>
+            </div>
+
+          </div>
+
         </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
+
+        <CropPlanner />
+
       </section>
 
-      <div className="ticks"></div>
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
+      {/* RECOMMENDED CROPS */}
+
+      <section className="recommended-section" id="crops">
+
+        <div className="section-top">
+
+          <div className="section-heading">
+
+            <div className="section-icon">
+              🌿
+            </div>
+
+            <div>
+              <h2>Recommended Crops</h2>
+
+              <p>
+                Based on your inputs, here are some suitable crops for you.
+              </p>
+            </div>
+
+          </div>
+
+          <a href="#crops" className="view-all">
+            View All Crops →
+          </a>
+
         </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
+
+
+        <div className="crop-grid">
+
+          <CropCard
+            crop="Rice"
+            season="Kharif"
+            soil="Clay"
+            image="https://images.unsplash.com/photo-1536304993881-ff6e9eefa2a6?auto=format&fit=crop&w=700&q=85"
+            description="A popular crop for warm and water-rich farming regions."
+            popular={true}
+          />
+
+          <CropCard
+            crop="Wheat"
+            season="Rabi"
+            soil="Loamy"
+            image="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=700&q=85"
+            description="A major Rabi crop that grows well in fertile loamy soil."
+          />
+
+          <CropCard
+            crop="Groundnut"
+            season="Zaid"
+            soil="Sandy"
+            image="https://images.unsplash.com/photo-1563298723-dcfebaa392e3?auto=format&fit=crop&w=700&q=85"
+            description="A suitable crop for warm conditions and well-drained soil."
+          />
+
         </div>
+
       </section>
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+
+      {/* SMART FARMING BANNER */}
+
+      <section className="smart-farming">
+
+        <div className="farming-image"></div>
+
+        <div className="farming-content">
+
+          <span className="farming-label">
+            🌱 FARM SMARTER
+          </span>
+
+          <h2>
+            Smarter Farming for a
+            <span> Greener Tomorrow</span>
+          </h2>
+
+          <p>
+            Make better farming decisions using location,
+            soil and seasonal information.
+          </p>
+
+        </div>
+
+        <div className="farming-features">
+
+          <div>
+            <span>🌴</span>
+            <small>Healthy Farms</small>
+          </div>
+
+          <div>
+            <span>🍃</span>
+            <small>Sustainable Future</small>
+          </div>
+
+          <div>
+            <span>🌱</span>
+            <small>Better Lives</small>
+          </div>
+
+        </div>
+
+      </section>
+
+
+      {/* FOOTER */}
+
+      <footer>
+
+        <div className="footer-brand">
+          🌿 <strong>SmartCrop<span>Planner</span></strong>
+        </div>
+
+        <div className="footer-message">
+          Smarter Farming
+          <b>•</b>
+          Healthy Soil
+          <b>•</b>
+          A Greener Tomorrow
+        </div>
+
+        <div className="footer-social">
+          <span>◉</span>
+          <span>◉</span>
+          <span>𝕏</span>
+          <span>in</span>
+        </div>
+
+      </footer>
+
+    </div>
+  );
 }
 
-export default App
+export default App;
