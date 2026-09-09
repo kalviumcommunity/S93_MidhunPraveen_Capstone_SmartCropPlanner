@@ -119,10 +119,10 @@ Day 7 — Polish & documentation
 Specify a license (e.g., MIT) in LICENSE file.
 
 
-## Development Workflow
 
-- Create a feature branch for each task.
-- Commit changes with clear messages.
-- Push the branch to GitHub.
-- Create a pull request to `main`.
-- Review and merge after approval.
+## Mock UX Design
+
+Figma Link:
+https://www.figma.com/design/1BQwY26QW5ZiYWpHqVDYRe/Untitled?node-id=0-1&t=x1xzX1b4Sj9OudfB-1
+This Mock UX demonstrates the primary screens, navigation flow,
+and major user journeys of the Smart Crop Planner application.
