@@ -52,13 +52,45 @@ app.get("/api/crops/:id", async (req, res) => {
   }
 });
 
-// POST - Write a new crop to MongoDB
+// POST - Create a new crop in MongoDB
 app.post("/api/crops", async (req, res) => {
   try {
-    const crop = new Crop(req.body);
+    const {
+      name,
+      season,
+      soilType,
+      description,
+      image,
+      suitableLocations,
+      durationDays,
+    } = req.body;
+
+    // Validate required fields
+    if (!name || !season || !soilType || !description || !durationDays) {
+      return res.status(400).json({
+        message:
+          "name, season, soilType, description, and durationDays are required",
+      });
+    }
+
+    // Create a new crop document
+    const crop = new Crop({
+      name,
+      season,
+      soilType,
+      description,
+      image: image || "",
+      suitableLocations: suitableLocations || [],
+      durationDays,
+    });
+
+    // Save crop to MongoDB
     const savedCrop = await crop.save();
 
-    res.status(201).json(savedCrop);
+    res.status(201).json({
+      message: "Crop created successfully",
+      crop: savedCrop,
+    });
   } catch (error) {
     res.status(400).json({
       message: "Failed to create crop",
