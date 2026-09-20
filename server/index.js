@@ -23,6 +23,7 @@ app.get("/", (req, res) => {
 app.get("/api/crops", async (req, res) => {
   try {
     const crops = await Crop.find();
+
     res.status(200).json(crops);
   } catch (error) {
     res.status(500).json({
@@ -99,6 +100,37 @@ app.post("/api/crops", async (req, res) => {
   }
 });
 
+// PUT - Update an existing crop in MongoDB
+app.put("/api/crops/:id", async (req, res) => {
+  try {
+    const updatedCrop = await Crop.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      {
+        new: true,
+        runValidators: true,
+      }
+    );
+
+    if (!updatedCrop) {
+      return res.status(404).json({
+        message: "Crop not found",
+      });
+    }
+
+    res.status(200).json({
+      message: "Crop updated successfully",
+      crop: updatedCrop,
+    });
+  } catch (error) {
+    res.status(400).json({
+      message: "Failed to update crop",
+      error: error.message,
+    });
+  }
+});
+
+// Start server
 app.listen(PORT, () => {
   console.log(`SmartCropPlanner API running on port ${PORT}`);
 });
