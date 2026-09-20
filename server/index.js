@@ -32,6 +32,26 @@ app.get("/api/crops", async (req, res) => {
   }
 });
 
+// GET - Read a single crop by ID from MongoDB
+app.get("/api/crops/:id", async (req, res) => {
+  try {
+    const crop = await Crop.findById(req.params.id);
+
+    if (!crop) {
+      return res.status(404).json({
+        message: "Crop not found",
+      });
+    }
+
+    res.status(200).json(crop);
+  } catch (error) {
+    res.status(400).json({
+      message: "Invalid crop ID",
+      error: error.message,
+    });
+  }
+});
+
 // POST - Write a new crop to MongoDB
 app.post("/api/crops", async (req, res) => {
   try {
