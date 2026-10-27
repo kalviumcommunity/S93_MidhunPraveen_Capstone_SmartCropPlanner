@@ -3,12 +3,17 @@ const cors = require("cors");
 
 const connectDB = require("./db");
 const Crop = require("./models/Crop");
+const { protect, adminOnly } = require("./middleware/auth");
+const authRoutes = require("./routes/auth");
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 
 app.use(cors());
 app.use(express.json());
+
+// Authentication routes
+app.use("/api/auth", authRoutes);
 
 connectDB();
 
@@ -54,7 +59,7 @@ app.get("/api/crops/:id", async (req, res) => {
 });
 
 // POST - Create a new crop in MongoDB
-app.post("/api/crops", async (req, res) => {
+app.post("/api/crops", protect, adminOnly, async (req, res) => {
   try {
     const {
       name,
@@ -101,7 +106,7 @@ app.post("/api/crops", async (req, res) => {
 });
 
 // PUT - Update an existing crop in MongoDB
-app.put("/api/crops/:id", async (req, res) => {
+app.put("/api/crops/:id", protect, adminOnly, async (req, res) => {
   try {
     const updatedCrop = await Crop.findByIdAndUpdate(
       req.params.id,
@@ -125,6 +130,29 @@ app.put("/api/crops/:id", async (req, res) => {
   } catch (error) {
     res.status(400).json({
       message: "Failed to update crop",
+      error: error.message,
+    });
+  }
+});
+
+// DELETE - Delete an existing crop from MongoDB
+app.delete("/api/crops/:id", protect, adminOnly, async (req, res) => {
+  try {
+    const deletedCrop = await Crop.findByIdAndDelete(req.params.id);
+
+    if (!deletedCrop) {
+      return res.status(404).json({
+        message: "Crop not found",
+      });
+    }
+
+    res.status(200).json({
+      message: "Crop deleted successfully",
+      crop: deletedCrop,
+    });
+  } catch (error) {
+    res.status(400).json({
+      message: "Failed to delete crop",
       error: error.message,
     });
   }
